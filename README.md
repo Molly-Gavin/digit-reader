@@ -1,5 +1,7 @@
 # Digit Reader
 
+I built this as a practice project to learn how machine learning models work before building a car identification model for [Joe's Garage](https://github.com/Molly-Gavin/joes-garage).
+
 A machine learning project that reads handwritten digits (0 through 9) using PyTorch.
 
 I built this as a practice project to learn how machine learning models work before building a car identification model for a larger app. It compares two kinds of models trained on the same data.
