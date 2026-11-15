@@ -5,16 +5,15 @@ from torchvision import datasets, transforms
 # Tool for drawing pictures
 import matplotlib.pyplot as plt
 # Our model from model.py
-from model import DigitReader
-
+from model import DigitReader, DigitReaderCNN
 # Load the test images
 test_data = datasets.MNIST(root="data", train=False, download=True, transform=transforms.ToTensor())
 
 # Create a fresh model (random dials)
-model = DigitReader()
+model = DigitReaderCNN()
 # Replace the random dials with the trained ones we saved
 # map_location="cpu" loads them onto the regular processor, which is fine for this
-model.load_state_dict(torch.load("digit_reader.pt", map_location="cpu"))
+model.load_state_dict(torch.load("digit_reader_cnn.pt", map_location="cpu"))
 # Put the model in testing mode
 model.eval()
 

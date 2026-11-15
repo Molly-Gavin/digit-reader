@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 # Tools for loading the digit images
 from torchvision import datasets, transforms
 # Our model from model.py
-from model import DigitReader
+from model import DigitReader, DigitReaderCNN
 
 # Use the Mac's graphics chip ("mps") if it's available, otherwise the regular processor ("cpu")
 device = "mps" if torch.backends.mps.is_available() else "cpu"
@@ -24,7 +24,7 @@ train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_data, batch_size=1000)
 
 # Create the model and move it onto the graphics chip
-model = DigitReader().to(device)
+model = DigitReaderCNN().to(device)
 
 # The loss function measures how wrong the model's guesses are
 # A big number means very wrong; a small number means close to right
@@ -87,5 +87,5 @@ for round_number in range(1, 6):
     print(f"Round {round_number}: loss {loss:.3f}, test accuracy {accuracy:.1f}%")
 
 # Save the trained dial settings to a file so we can use them later without retraining
-torch.save(model.state_dict(), "digit_reader.pt")
-print("Saved the trained dials to digit_reader.pt")
+torch.save(model.state_dict(), "digit_reader_cnn.pt")
+print("Saved the trained dials to digit_reader_cnn.pt")
